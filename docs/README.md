@@ -5,7 +5,7 @@ Plasma 5 widget made to read BG from Nightscout's [API](https://github.com/night
 
 Installation
 ------------
-On the org.kde.plasma.nightscoutwidget folder do:
+On the nightscout-widget-kde folder do:
 
 ```
 kpackagetool5 -t Plasma/Applet --install .
