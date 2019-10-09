@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=Nightscout Widget
+Comment=Shows your BG from Nightscout as a widget
+
+Icon=applications-other
+Type=Service
+ServiceTypes=Plasma/Applet
+
+X-Plasma-API=declarativeappletscript
+X-Plasma-MainScript=ui/main.qml
+
+X-KDE-PluginInfo-Author=cominixo
+X-KDE-PluginInfo-Email=cominixo01@gmail.com
+X-KDE-PluginInfo-Name=org.kde.plasma.nightscoutwidget
+X-KDE-PluginInfo-License=GPL3
+X-KDE-PluginInfo-Version=1.0
+X-KDE-PluginInfo-Website=https://github.com/cominixo01
