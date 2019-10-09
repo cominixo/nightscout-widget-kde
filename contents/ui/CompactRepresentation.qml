@@ -17,7 +17,6 @@ GridLayout {
 
         text: "???"
         Layout.alignment: center
-        //anchors.centerIn: parent
         font {
             family: plasmoid.configuration.fontFamily || theme.defaultFont.family
             weight: plasmoid.configuration.boldText ? Font.Bold : theme.defaultFont.weight
@@ -41,13 +40,15 @@ GridLayout {
             if (request.readyState == XMLHttpRequest.DONE) {
                 if (request.status == 200) {
                     var j = JSON.parse(request.responseText);
+                    var bgs = j.bgs[0];
+                    var trend = trend_arrows[bgs.trend];
 
-                    currentBG.text = (j.bgs[0].sgv + " mg/dl");
+                    currentBG.text = bgs.sgv + " mg/dl " + trend;
                     currentBG.color = "white";
                 }
             }
         }
-        console.log(nightscoutURL);
+
         if (nightscoutURL.charAt(-1)) {
             nightscoutURL = nightscoutURL.substring(1);
         }

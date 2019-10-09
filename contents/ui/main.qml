@@ -11,7 +11,7 @@ import org.kde.plasma.plasmoid 2.0
 
 Item {
     property int read_interval: 30000
-
+    property variant trend_arrows: ["", "↟", "↑", "↗", "→", "↘", "↓", "↡", "↮", "↺"]
     property string nightscoutURL: Plasmoid.configuration.nightscoutURL
 
     Plasmoid.compactRepresentation: CompactRepresentation { }
