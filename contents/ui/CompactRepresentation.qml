@@ -3,36 +3,24 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.components 3.0 as PlasmaComponents
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.kquickcontrolsaddons 2.0
 
-GridLayout {
-    anchors.fill: parent
-    rows: 2
-    columns: 1
-
+ColumnLayout {
     PlasmaComponents.Label {
         id: currentBG
-
         text: "???"
-        Layout.alignment: center
-        font {
-            family: plasmoid.configuration.fontFamily || theme.defaultFont.family
-            weight: plasmoid.configuration.boldText ? Font.Bold : theme.defaultFont.weight
-            italic: plasmoid.configuration.italicText
-            pixelSize: 24
-        }
     }
+
     Timer {
         id: textTimer
-        interval: read_interval
+        interval: updateInterval * 60 * 1000
         repeat: true
         running: true
         triggeredOnStart: true
         onTriggered: readData()
     }
-
 
     function readData() {
         var request = new XMLHttpRequest();
@@ -41,10 +29,9 @@ GridLayout {
                 if (request.status == 200) {
                     var j = JSON.parse(request.responseText);
                     var bgs = j.bgs[0];
-                    var trend = trend_arrows[bgs.trend];
+                    var trend = trendArrows[bgs.trend];
 
                     currentBG.text = bgs.sgv + " mg/dl " + trend;
-                    currentBG.color = "white";
                 }
             }
         }
@@ -53,7 +40,7 @@ GridLayout {
             nightscoutURL = nightscoutURL.substring(1);
         }
 
-        request.open("GET", nightscoutURL + "/pebble");
+        request.open("GET", nightscoutURL + "/pebble/?token=" + nightscoutToken);
         request.send();
     }
 }
