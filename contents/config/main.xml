@@ -8,8 +8,13 @@
 
     <group name="General">
         <entry name="nightscoutURL" type="String">
-            <label>Your Nightscout url (e.g. https://appname.herokuapp.com)</label>
             <default>https://appname.herokuapp.com</default>
+        </entry>
+        <entry name="nightscoutToken" type="String">
+            <default>plasmoid-0000000</default>
+        </entry>
+        <entry name="updateInterval" type="Int">
+            <default>5</default>
         </entry>
     </group>
 </kcfg>

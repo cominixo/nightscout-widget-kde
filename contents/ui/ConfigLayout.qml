@@ -1,28 +1,24 @@
-import QtMultimedia 5.8
-import QtQuick 2.7
-import QtQuick.Controls 1.4
-import QtQuick.Dialogs 1.2
-import QtQuick.Layouts 1.3
+import QtQuick 2.0
+import QtQuick.Controls 2.5 as QQC2
+import org.kde.kirigami 2.4 as Kirigami
 
-import org.kde.plasma.core 2.0 as PlasmaCore
+Kirigami.FormLayout {
+    id: page
 
-Item {
     property alias cfg_nightscoutURL: nightscoutURL.text
+    property alias cfg_nightscoutToken: nightscoutToken.text
+    property alias cfg_updateInterval: updateInterval.value
 
-    GridLayout {
-        width: parent.width
-        columns: 2
-
-        Text {
-            text: "Your Nightscout url (e.g. https://appname.herokuapp.com)"
-            color: "white"
-            Layout.alignment: Qt.AlignRight
-        }
-
-        TextField {
-            id: nightscoutURL
-            Layout.fillWidth: true
-            placeholderText: "https://"
-        }
+    QQC2.TextField {
+        id: nightscoutURL
+        Kirigami.FormData.label: i18n("Nightscout URL")
+    }
+    QQC2.TextField {
+        id: nightscoutToken
+        Kirigami.FormData.label: i18n("Nightscout API token")
+    }
+    QQC2.SpinBox {
+        id: updateInterval
+        Kirigami.FormData.label: i18n("Update Interval (minutes)")
     }
 }
